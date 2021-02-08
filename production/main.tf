@@ -5,11 +5,7 @@ terraform {
       version = "~> 2.70"
     }
   }
-  backend "s3" {
-    bucket = "terraform-demo-backend"
-    key    = "terraform/webapp/terraform.tfstate"
-    region = "eu-west-1"
-  }
+  
 }
 
 provider "aws" {

@@ -6,9 +6,12 @@ terraform {
   }
 }
 
+provider "aws" {
+  region = "eu-west-1"
+}
 
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = "terraform-demo-backend-bucket"
+  bucket = "terraform-demo-backend"
   # Enable versioning so we can see the full revision history of our
   # state files
   force_destroy = true
