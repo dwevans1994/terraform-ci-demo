@@ -148,9 +148,10 @@ resource "aws_security_group" "web" {
         Name = "WordpressSG"
     }
 }
-
+# specific AMI ami-0e3f630ea5003ecf3 with it's purpose to be a bastion but didn't have permission to use it
+# so had to use a plain linux instance
 resource "aws_instance" "nat" {
-    ami = "ami-0e3f630ea5003ecf3"
+    ami = "ami-0fc970315c2d38f01"
     availability_zone = "eu-west-1a"
     instance_type = "t2.micro"
     key_name = "${aws_key_pair.deployer.key_name}"
@@ -163,7 +164,7 @@ resource "aws_instance" "nat" {
         Name = "Bastion"
     }
 }
-
+# specific AMI that had wordpress already installed but didn't have permission to use it
 resource "aws_instance" "wordpress" {
     ami = "ami-0fc970315c2d38f01"
     availability_zone = "eu-west-1a"
