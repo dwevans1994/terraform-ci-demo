@@ -8,6 +8,7 @@
         -   My plan was to write a bash script that installs and runs wordpress :'( 
     - I have created the instances inside a public_subnet hosted within a VPC, this has access to the internet via a        internet_gateway
     - As I am only creating the one application I decided not to break the code down into further module for reusability but I would have done this if I had more time.
+    - I also used an external S3 bucket to store the state file.
 
 # CI pipeline and GIT
 - I have used CircleCi as my automated pipeline this will initialise, apply and destroy my resources in AWS.

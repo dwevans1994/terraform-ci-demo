@@ -8,7 +8,7 @@ terraform {
 
 
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = "terraform-demo-backend"
+  bucket = "terraform-demo-backend-bucket"
   # Enable versioning so we can see the full revision history of our
   # state files
   force_destroy = true
