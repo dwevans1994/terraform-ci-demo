@@ -20,6 +20,7 @@ jobs:
             - .
 
   apply:
+    working_directory: /production
     docker:
       - image: hashicorp/terraform:light
     steps:
@@ -28,6 +29,8 @@ jobs:
       - run:
           name: terraform
           command: |
+            cd ..
+            cd production/production
             terraform apply -auto-approve tfapply
       - persist_to_workspace:
           root: .
@@ -35,6 +38,7 @@ jobs:
             - .
 
   plan-destroy:
+    working_directory: /production
     docker:
       - image: hashicorp/terraform:light
     steps:
@@ -43,7 +47,8 @@ jobs:
       - run:
           name: terraform create destroy plan
           command: |
-            cd project/production
+            cd ..
+            cd production/production
             terraform plan -destroy -out tfdestroy -var-file variables.tfvars
       - persist_to_workspace:
           root: .
@@ -51,6 +56,7 @@ jobs:
             - .
 
   destroy:
+    working_directory: /production
     docker:
       - image: hashicorp/terraform:light
     steps:
@@ -59,6 +65,8 @@ jobs:
       - run:
           name: terraform destroy
           command: |
+            cd ..
+            cd production/production
             terraform apply -auto-approve tfdestroy
 workflows:
   version: 2
